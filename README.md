@@ -7,13 +7,13 @@ Cette édition partielle de roman a été réalisée en suivant les TEI guidelin
 Le texte utilisé lors de ce projet provient de [Gallica](https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/). Après avoir été océsiré dans le but d'en obtenir une version texte, on a encodé sa structure et ses métadonnées, puis on a réalisé l'encodage et l'indexation des personnages et lieux mentionnés. Enfin, un ODD, présentant le projet, les choix d'encodages faits et les possibilités d'exploitation du fichier a été réalisé. Ce document permet également de forcer l'encodage le plus précisemment possible.
 
 ## Structure du dépôt
-- Jjanes_CC3_EugeneSue.xml: le fichier d'encodage TEI
-- Jjanes_CC3_EugeneSue.html: une version html du fichier encodé
+- Eugene_Sue_TEI.xml: le fichier d'encodage TEI
+- Transformation_HTML.xsl : feuille de transformation permettant d'obtenir une version html du projet
 - images: 
      - image1.JPEG
      - image2.JPEG
 - ODD: 
-     - Jjanes_CC3_ODD.xml: ODD du projet
-     - Jjanes_CC3_ODD.html: verson html de l'ODD
+     - ODD.xml: ODD du projet
+     - ODD.html: verson html de l'ODD
      - out:
-         Jjanes_CC3_ODD.rng: schéma rng  
+         ODD.rng: schéma rng  
