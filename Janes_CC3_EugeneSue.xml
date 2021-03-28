@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Excellent travail d'encodage -->
+
+<?xml-model href="ODD/out/Jjanes_CC3_ODD.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="ODD/out/Jjanes_CC3_ODD.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <!-- Choses à faire
+      -contraintes dans l'ODD:  typer le xml:id de person et place pour n'avoir que des lettres majuscules
+      -faire la documentation
+      -->
+    <!-- Attention à bien retirer ce commantaire quand le travail est fait, pour le schematron des majuscules, vous avez laissé un chemin vers tei:app -->
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title type="full">
+                    <title type="main">Jean Bart et Louis XIV</title>
+                    <title type="sub">drames maritimes du XVIIème siècle</title>
+                </title>
+                <author>
+                    <forename>Marie-Joseph</forename>
+                    <roleName type="pseudonyme">Eugène</roleName>
+                    <surname> Sue</surname>
+                </author>
+                <respStmt>
+                    <resp>Encodage XML réalisé dans le cadre de la validation du cours de XML-TEI de
+                        l'Ecole nationale des Chartes d'Ariane Pinche pour le M2 TNAH</resp>
+                    <persName>
+                        <forename>Juliette</forename>
+                        <surname>Janes</surname>
+                    </persName>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <publisher>Maresq et Cie</publisher>
+                <pubPlace>Paris</pubPlace>
+                <date when-iso="1851">1851</date>
+            </publicationStmt>
+            <sourceDesc>
+                <biblFull>
+                    <titleStmt>
+                        <title type="full">
+                            <title type="main">Jean Bart et Louis XVI</title>
+                            <title type="sub">drames maritimes du XVIe siècle</title>
+                            <title type="m">édition illustrée par JA-Beaucé</title>
+                        </title>
+                        <author resp="main">
+                            <forename>Marie-Joseph</forename>
+                            <roleName type="pseudonyme">Eugène</roleName>
+                            <surname>Sue</surname>
+                        </author>
+                        <author resp="contributor">
+                            <forename>Jean-Adolphe</forename>
+                            <surname>Beaucé</surname>
+                            <note>Illustrateur</note>
+                        </author>
+                    </titleStmt>
+                    <publicationStmt>
+                        <publisher>Maresq et Cie</publisher>
+                        <date when-iso="1851">1851</date>
+                        <pubPlace>Paris</pubPlace>
+                        <distributor facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/"
+                            >BnF</distributor>
+                        <availability>
+                            <licence>Domaine public</licence>
+                        </availability>
+                    </publicationStmt>
+                    <seriesStmt>
+                        <title>Jean Bart et Louis XVI</title>
+                        <biblScope unit="volume" n="1"/>
+                        <biblScope unit="chapitre" n="1"/>
+                        <biblScope unit="page" from="2" to="3">pp.2-3</biblScope>
+                    </seriesStmt>
+                </biblFull>
+            </sourceDesc>
+        </fileDesc>
+        <profileDesc>
+            <settingDesc>
+                <listPlace>
+                    <!--index des lieux mentionnés dans le texte-->
+                    <place xml:id="DUNKERQUE">
+                        <placeName>Dunkerque</placeName>
+                        <note> Ville portuaire de Flandres aux mains des Habsbourgs depuis 1520,
+                            elle est au cours des rivalités entre les rois d'Espagne et de France. </note>
+                       <!-- Très bien -->
+                        <listEvent>
+                            <head>Batailles de Dunkerque</head>
+                            <event xml:id="SIEGE_DUNKERQUE" type="siege" from="1658-05-15"
+                                to="1658-06-25">
+                                <label>Siège de Dunkerque par le maréchal de Turenne</label>
+                                <desc>Assiégée une première fois par la France en 1652, Dunkerque,
+                                    aux mains du <persName ref="#ROIESP">roi d'Espagne</persName>,
+                                    l'est à nouveau, par le <persName ref="#TURENNES">maréchal de
+                                        Turenne</persName>et <persName ref="#LOCLIART">William de
+                                        Locliart</persName>, pour le compte de la France, des
+                                    Provinces Unies et de l'Angleterre, à partir du 15 mai 1658, qui
+                                    correspond au début du roman.</desc>
+                            </event>
+                            <event xml:id="DUNES" type="bataille" when-iso="1658-06-14">
+                                <label>Bataille des Dunes</label>
+                                <desc>La bataille des Dunes oppose la <persName type="belligerant"
+                                        ref="#FRANCAIS">France</persName>, l'<persName
+                                        type="belligerant" ref="#ANGLAIS">Angleterre</persName> et
+                                    les <persName type="belligerant" ref="#PROVINCESUNIES">Provinces
+                                        Unies</persName>, pour qui combattent le <persName
+                                        type="commandant" ref="#TURENNE">maréchal de
+                                        Turenne</persName>, <persName type="commandant"
+                                        ref="#LOCLIART">William de Locliart</persName> aux troupes
+                                        <persName type="belligerant" ref="#ESPAGNOLS"
+                                        >espagnols</persName> commandées par <persName
+                                        type="commandant" ref="#CONDE">le prince de
+                                    Condé</persName>, le <persName type="commandant" ref="#UDE"
+                                        >marquis de Ude</persName> et <persName type="commandant"
+                                        ref="#JUANDAUTRICHE">Juan d'Autriche</persName>.</desc>
+                            </event>
+                        </listEvent>
+                    </place>
+                    <place xml:id="RUEEGLISE">
+                        <placeName>Rue de l'Église</placeName>
+                        <settlement>Dunkerque</settlement>
+                    </place>
+                    <place xml:id="MAISONBART">
+                        <placeName>Maison de la Famille Bart</placeName>
+                        <district>Rue de l'Église</district>
+                        <settlement>Dunkerque</settlement>
+                    </place>
+                    <place xml:id="OSTENDE">
+                        <placeName>Ostende</placeName>
+                        <note> Ville portuaire de Flandres, à l'est de Dunkerque, située dans
+                            l'actuelle Belgique</note>
+                    </place>
+                </listPlace>
+            </settingDesc>
+            <particDesc>
+                <!--index des personnes mentionnées dans le texte.
+               Celles-ci sont séparées par différentes listPerson en fonction de leur caractère (historique, principal, secondaire)-->
+                <listPerson type="famillebart">
+                    <person xml:id="CORNILLEBART">
+                        <persName>
+                            <forename>Cornille</forename>
+                            <surname>Bart</surname>
+                        </persName>
+                        <note>(1619-1668) Corsaire dunkerquois combattant pour le compte des
+                            Provinces-Unies. Marié à <persName ref="#FEMMEBART">Catherine
+                                Bart</persName>, père de <persName ref="#JEANBART">Jean
+                                Bart</persName>. Maître de <persName ref="#HARANSAURET"
+                                >Haran-Sauret</persName></note>
+                    </person>
+                    <person xml:id="FEMMEBART">
+                        <persName>
+                            <forename>Catherine</forename>
+                            <surname>Janssen Rodrigues</surname>
+                            <roleName>épouse Bart </roleName>
+                        </persName>
+                        <note>(1625-1682) Fille du corsaire Henri Janssen et d'Elisabeth Rodrigues,
+                            fille de négociants originaires d'Espagne, Femme de <persName
+                                ref="#CORNILLEBART">Cornille Bart </persName> et mère de <persName
+                                ref="#JEANBART">Jean Bart</persName>.</note>
+                    </person>
+                    <person xml:id="JEANBART">
+                        <!--Non mentionné dans l'extrait à encoder, mais il m'a semblé nécessaire de l'ajouter pour l'index de personnage.-->
+                        <persName>
+                            <forename>Jean</forename>
+                            <surname>Bart</surname>
+                        </persName>
+                        <note> (1650-1702) Corsaire dunkerquois au service de la France sous le
+                            règne de <persName ref="#LOUISXIV">Louis XIV</persName>. Personnage
+                            principal du roman.</note>
+                    </person>
+
+                </listPerson>
+                <listPerson type="historique">
+                    <!--Personnages historiques mentionnés dans la scène-->
+
+                    <person xml:id="LOUISXIV">
+                        <persName>
+                            <forename>Louis</forename>
+                            <surname>de Bourbon</surname>
+                            <roleName type="noble">Louis XIV</roleName>
+                        </persName>
+                        <note> (1638-1715) Roi de France et de Navare de 1643 à 1715.</note>
+                    </person>
+                    <person xml:id="TURENNE">
+                        <persName>
+                            <forename>Henri</forename>
+                            <surname>de La Tour d'Auvergne</surname>
+                            <roleName type="noble">Vicomte de Turenne</roleName>
+                        </persName>
+                        <note>(1611-1675) Général de Louis XVII puis <persName ref="#LOUISXIV">Louis
+                                XIV</persName>. Maréchal de France en 1643.</note>
+                    </person>
+                    <person xml:id="HOCQUINCOURT">
+                        <persName>
+                            <forename>Charles</forename>
+                            <surname>De Monchy</surname>
+                            <roleName type="noble">Marquis d'Hocquincourt</roleName>
+                        </persName>
+                        <note> (1599-1658) Officier sous Louis XIII et <persName ref="#LOUISXIV"
+                                >Louis XVI</persName>, maréchal de France</note>
+                    </person>
+                    <person xml:id="JUANDAUTRICHE">
+                        <persName>
+                            <forename>José-Juan</forename>
+                            <surname>d'Autriche</surname>
+                            <roleName type="noble">Comte d'Onate</roleName>
+                        </persName>
+                        <note> (1629-1679) Enfant légitimé de <persName ref="#ROIESP">Philippe IV
+                                d'Espagne</persName>. Homme politique et général espagnol,
+                            gouverneur des Pays-Bas Espagnols de 1656 à 1659. </note>
+                    </person>
+                    <person xml:id="ROIESP">
+                        <persName>
+                            <forename>Philippe IV</forename>
+                            <surname>d'Espagne</surname>
+                        </persName>
+                        <note> (1605-1665) Roi des Espagnes et des Indes de 1621 à 1665, père de
+                                <persName ref="#JUANDAUTRICHE">Juan d'Autriche</persName>
+                        </note>
+                    </person>
+                    <person xml:id="CUEVA">
+                        <persName>
+                            <forename>Antonio</forename>
+                            <surname>de la Cueva</surname>
+                            <roleName>Don</roleName>
+                        </persName>
+                    </person>
+                    <person xml:id="MAZARIN">
+                        <persName>
+                            <forename>Jules</forename>
+                            <surname>Mazarin</surname>
+                            <roleName>Cardinal </roleName>
+                        </persName>
+                        <note>(1602-1661) Diplomate au service de la papauté puis de Louis XIII et
+                                <persName ref="#LOUISXIV">Louis XVI</persName>. Ministre principal
+                            de 1643 à 1661.</note>
+                    </person>
+                    <person xml:id="SOISSONS"/>
+                    <person xml:id="ESTRADES">
+                        <persName>
+                            <forename> Godefroi</forename>
+                            <surname>d'Estrades</surname>
+                        </persName>
+                        <note>(1697-1686) diplomate français et maréchal de France</note>
+                    </person>
+                    <person xml:id="CONDE">
+                        <persName>
+                            <forename>Louis</forename>
+                            <surname>De Bourbon</surname>
+                            <roleName>Prince de Condé</roleName>
+                        </persName>
+                        <note>(1621-1686) Prince et général Français.</note>
+                    </person>
+                    <person xml:id="LOCLIART"/>
+                    <person xml:id="CROMWELL">
+                        <persName>
+                            <forename>Oliver</forename>
+                            <surname>Cromwell</surname></persName>
+                        <note>(1599-1658) Homme politique anglais qui prend part à l'établissement
+                            du Commonwealth et en devient le lord-protecteur.</note>
+                    </person>
+                    <person xml:id="UDE"/>
+
+                </listPerson>
+
+                <listPerson type="secondaire">
+
+                    <!--Personnages secondaires apparaissant dans la scène-->
+                    <person xml:id="HARANSAURET">
+                        <persName>Haran Sauret</persName>
+                        <note> Marin dunkerquois, vieux serviteur de <persName ref="#CORNILLEBART"
+                                >Cornille Bart</persName>
+                        </note>
+                    </person>
+                    <person xml:id="BELSEN"/>
+                    <person xml:id="BOURGEOIS1"/>
+                    <person xml:id="BOURGEOIS2"/>
+                    <person xml:id="BUSCHE"/>
+                    <person xml:id="BUGNIET"/>
+                </listPerson>
+                <listPerson type="groupes">
+                    <!-- Très bien -->
+                    <!--groupes mentionnés dans la scène-->
+
+                    <personGrp xml:id="BOURGEOIS"/>
+                    <personGrp xml:id="FRANCAIS"/>
+                    <personGrp xml:id="ANGLAIS"/>
+                    <personGrp xml:id="ESPAGNOLS"/>
+                    <personGrp xml:id="PROVINCESUNIES"/>
+
+                    <!--liste des relations-->
+                    <listRelation type="personnelle">
+                        <relation name="parents" active="#CORNILLEBART #FEMMEBART"
+                            passive="#JEANBART"/>
+                        <relation name="époux" mutual="#FEMMEBART #CORNILLEBART"/>
+                        <relation name="parents" active="#ROIESP" passive="#JUANDAUTRICHE"/>
+                    </listRelation>
+                    <listRelation type="sociale">
+                        <relation name="supérieur" active="#CORNILLEBART" passive="#HARAN-SAURET"/>
+                        <relation name="supérieur" active="#LOUISXIV"
+                            passive="#FRANCAIS #CONDE #HOCQUINCOURT #MAZARIN #TURENNE"/>
+                        <relation name="supérieur" active="#CROMWELL" passive="#ANGLAIS #LOCLIART"/>
+                        <relation name="supérieur" active="#ROIESP"
+                            passive="#JUANDAUTRICHE #ESPAGNOLS"/>
+                    </listRelation>
+                </listPerson>
+
+            </particDesc>
+            <langUsage>
+                <language ident="fr"/>
+            </langUsage>
+        </profileDesc>
+
+    </teiHeader>
+    <text>
+        <body>
+            <div1 type="livre" n="1">
+                <head>Livre I</head>
+                <div2 type="chapitre" n="1">
+                    <head> Chapitre 1</head>
+                        <pb facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f13.item" n="1"/>
+                        <figure facs="images/image1.JPEG" type="en-tête">
+                            <head>Jean Bart et Louis XIV drames maritimes du XVIIe siècle par Eugène
+                                Sue</head>
+                            <figDesc>Gravure de Beaucé figurant en en-tête de la page, au dessus du
+                                titre et représentant deux titrons encadrant des armes et un
+                                chapeau</figDesc> <!-- Très bien -->
+                        </figure>
+                        <cb n="1"/>
+                            <p>C'était pendant le siège de <placeName ref="#DUNKERQUE"
+                                    >Dunkerque</placeName>, au mois de <date when-iso="06-1658">juin
+                                    1658</date>, quelques jours avant la sanglante <date
+                                    when-iso="14-06-1658">bataille des Dunes</date>, qui décida du
+                                sort de cette ville importante, alors assiégée par l'armée <rs
+                                    ref="#FRANCAIS">franco</rs>-<rs ref="#ANGLAIS">anglaise</rs> que
+                                commandaient <persName ref="#TURENNE">M. le. maréchal de
+                                    Turenne</persName> pour <persName ref="#LOUISXIV">Louis
+                                    XIV</persName>, et <persName ref="#LOCLIART">Sa Seigneurie lord
+                                    Locliart</persName> pour <persName ref="#CROMWELL"
+                                    >Cromwell</persName>; <persName ref="#UDE"> M.le marquis de
+                                    Ude</persName>, <persName ref="#CONDE">M. le prince de
+                                    Condé</persName> et <persName ref="#JUANDAUTRICHE">don Juan
+                                    d'Autriche</persName> défendaient la place pour le <persName
+                                    ref="#ROIESP">roi d'Espagne</persName>, qui la possédait depuis
+                                    <date when-iso="1652">1652</date>. </p>
+                            <p>Or, par une belle soirée de ce mois, un groupe assez nombreux de <rs
+                                    ref="#BOURGEOIS">bourgeois</rs> et de marks se pressait sur le
+                                degré d'une modeste <placeName ref="#MAISONBART">maison</placeName>
+                                située vers cette partie de la <placeName ref="#RUEEGLISE">rue de
+                                    l'Église</placeName> qui avoisinait la paroisse, alors si
+                                renommée par son merveilleux carillon.</p>
+                            <p part="I">Cette <placeName ref="#MAISONBART">maison</placeName>, comme
+                                presque toutes celles du temps, était de forme irrégulière, avec de
+                                hautes et étroites croisées en ogives, garnies d'un treillis de
+                                plomb. La date de l'année de sa</p>
+                        <figure facs="images/image2.JPEG" type="milieu">
+                            <head>Mort de Cornille Bart -Ou! Les Anglais... -PAGE 7</head>
+                            <figDesc>Gravure de Beauce, au milieu de la page, représentant la mort
+                                de Cornille Bart, assis en robe dans un fauteuil et encadré de deux
+                                gentilhommes</figDesc>
+                        </figure>
+                        <cb n="2"/>
+                            <p part="F"> construction se voyait chiffrée en barre de fer sur la
+                                façade; enfin, au-dessus des fenêtres du rez-de-chaussée, à gauche
+                                du degré et au niveau de la rue, une porte en saillie, garnie de
+                                larges ferrures, donnait entrée dans la cave.</p>
+                            <p>Nous l'avons dit un assez grand nombre de <persName ref="#BOURGEOIS"
+                                    >bourgeois </persName> entourait cette demeure, et, quoiqu'on
+                                entendît de loin à loin le bruit de l'artillerie des forts, qui
+                                répondait sourdement aux batteries <rs ref="#ANGLAIS">anglaises</rs>
+                                et <rs ref="#FRANCAIS">françaises</rs>, les progrès du siège ne
+                                paraissaient pas alors occuper l'attention du groupe dont nous avons
+                                parlé. Le nom de <persName ref="#CORNILLEBART">maître Cornille
+                                    Bart</persName>, échangé à voix basse entre <rs ref="#BOURGEOIS"
+                                    >ces personnages</rs> avec une curiosité inquiète, témoignait de
+                                la popularité dont jouissait cet <rs ref="#CORNILLEBART">intrépide
+                                    corsaire</rs>, et du vif intérêt qui s'attachait à lui depuis
+                                que deux blessures graves et dangereuses, reçues pendant le siège,
+                                mettaient sa vie en danger.</p>
+                            <p part="I"> Enfin, après quelques moments d'attente, l'épaisse porte de
+                                chêne noir qui surmontait le degré s'ouvrit, et <rs
+                                    ref="#HARANSAURET">un marinier</rs> à </p>
+                        <pb facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f14.item" n="2"/>
+                        <cb n="1"/>
+                            <p part="F">cheveux gris, au visage maigre et hâlé, d'une taille
+                                moyenne, et vêtu d'un justaucorps de serge d'Aumale bleue, à boutons
+                                d'étain, et de larges chausses à la flamande, commandant le silence
+                                d'un geste significatif, dit très-bas aux gens qui composaient ce
+                                groupe : <said who="#HARANSAURET">— <persName ref="#CORNILLEBART"
+                                        >Maître Cornille</persName> vient de s'éveiller tout à
+                                    l'heure : le physicien <note n="1" place="end">Le
+                                        médecin.</note> avait dit ce matin que, s'il dormait trois
+                                    heures, cela serait bien ; or, <persName ref="#CORNILLEBART"
+                                        >maître Cornille</persName> en a dormi quatre : c'est donc
+                                    mieux que bien.</said></p>
+                            <p><said who="#BOURGEOIS" toWhom="#HARANSAURET">— Merci, merci,
+                                        <persName ref="#HARANSAURET">Haran-Sauret</persName>,
+                                    murmura l'auditoire à voix basse, et que le Seigneur entende nos
+                                    bons vœux pour <persName ref="#CORNILLEBART">maître Cornille
+                                        Bart</persName>.</said></p>
+                            <p><said who="#BUSCHE">— Et par les reliques de saint Omer!</said>
+                                s'écria un jeune patron de busche<note n="2" place="end">Buste ou
+                                    busche, sorte de bâtiment dont on se sert pour la pêche du
+                                    hareng dans les mers de Hollande et d'Angleterre. </note>, <said
+                                    who="#BUSCHE">la première fois que ces chiens d'Anglais me
+                                    laisseront jeter mon filet saint vers la haute mer, tout le
+                                    poisson que je prendrai sera vendu afin de faire dire une messe
+                                    dans l'église paroissiale, pour la résurrection et bonne revenue
+                                    de très-honoré <persName ref="#CORNILLEBART">maître Cornille
+                                        Bart</persName>.</said></p>
+                            <p><said who="#HARANSAURET" toWhom="#BUSCHE">— Bien, bien, jeune
+                                    fils,</said> reprit le <rs ref="#HARANSAURET"
+                                    >marinier</rs>,<said who="#HARANSAURET"> mais plus bas, pour
+                                    l'amour du ciel, plus bas, car vous béez bien comme un don<note
+                                        n="3" place="end">Un Espagnol.</note> qu'on veut
+                                    peigner.</said> Puis, s'adressant à un grave bourgeois coiffé
+                                d'un large feutre et vêtu d'un pourpoint à la flamande :<said
+                                    who="#HARANSAURET" toWhom="#BELSEN">— Et qu'ont fait les dons
+                                    aujourd'hui, <persName ref="#BELSEN">maître
+                                    Belsen</persName>?...</said></p>
+                            <p><said who="#BOURGEOIS">— Nous défendent-ils aussi vaillamment
+                                    qu'autrefois <persName ref="#ESTRADES">M. le comte
+                                        d'Estrades</persName>, quand nous étions
+                                Français?...</said></p>
+                            <p><said who="#BELSEN">— <persName ref="#HOCQUINCOURT">M. le maréchal de
+                                        Hocquincourt</persName> a été tué dans une sortie,</said>
+                                répondit le bourgeois,<said who="#BELSEN"> tué par une escoupéterie
+                                    des enfants perdus de <persName ref="#TURENNE">M. de
+                                        Turenne</persName>, commandés par <persName ref="#SOISSONS"
+                                        >M. le comte de Soissons</persName>. C'est du moins le
+                                    connétable de la confrérie des arbalétriers qui a dit cela au
+                                    cabaret des Sept-Planètes, où j'étais tantôt, avant la vesprée;
+                                    il tenait la nouvelle d'un de ces maudits manteaux rouges de la
+                                    compagnie de <persName ref="#CUEVA">don Antonio de la
+                                        Cueva</persName>.</said></p>
+                            <p><said who="#HARANSAURET" toWhom="#BELSEN">— Oh! là... <persName
+                                        ref="#BELSEN">maître Belsen</persName>, voici encore une
+                                    brave écharpe bleue<note n="4" place="end">Couleur de M. le
+                                        prince de Condé. </note> qui échappe à la hache du bourreau
+                                    par une mousquetade ; aussi bien le seigneur maréchal avait le
+                                    pronostic d'une fâcheuse étoile sur son visage; je l'ai bien vu
+                                    le jour où il remit au capitaine de la colonelle l'étendard de
+                                        <persName ref="#CONDE">M. le Prince</persName>..., un noble
+                                    étendard de satin blanc, ma foi, tout cantonné dé fleurs de lis
+                                    d'or, avec une frange de soie isabelle et rouge<note n="5"
+                                        place="end">Couleurs des livrées de M le Prince.</note>;
+                                    c'est ça qui aurait fait un fier tendelet pour le carrosse d'une
+                                    galère capitane... ah! et puis on avait fait sur l'étendard une
+                                    grande flamme qui sortait vivement d'un monceau de bois. et
+                                    autour pour devise... ah! par ma foi! pour devise... des mots
+                                    comme latins... ou même morisques... N'est-ce pas, <persName
+                                        ref="#BELSEN">maître Belsen</persName>?...</said></p>
+                            <p><said who="#BELSEN" toWhom="#HARANSAURET">— Oui,</said> dit le <rs
+                                    ref="#BELSEN">bourgeois</rs> d'un air triste et chagrin; <said
+                                    who="#BELSEN" toWhom="#HARANSAURET"> oui, oui, des mots
+                                    latins... <foreign xml:lang="la">Splendescam, da materiam</foreign><note n="6" place="end">Devise
+                                        de M. le prince de Condé.</note>, ce qui veut dire :
+                                    Donnez-moi de la matière, et je resplendirai... Or, la matière,
+                                    c'est nos pistoles et nos magasins; la matière, c'est enfin nous
+                                    autres bourgeois trafiquants et armateurs de <placeName
+                                        ref="#DUNKERQUE">Dunkerque</placeName>, qui, pendant de
+                                    pareils sièges, ne pouvons vendre une aune de serge, ou faire
+                                    sortir une bélandre<note n="7" place="end">Bélandre, en
+                                        hollandais bylander, dont le gréément différait peu de celui
+                                        du brigantiu. Ces bâtiments étaient plats et avaient besoin
+                                        d'une semelle ou dérive.</note> du havre. Quant à ce qui
+                                    resplendit, oh! oh! ce sont trompettes de gloire, écharpes
+                                    dorées, casques de bataille, et autres engins de renommée,
+                                    inutiles et pervers.</said></p>
+                        <cb n="2"/>
+                            <p><said who="#BOURGEOIS1">— Aussi donnerais-je tout à l'heure vingt
+                                    écus d'or, dit un autre bourgeois, pour voir au diable le vieux
+                                    marquis et tous ses dons ; car enfin nous aimerions mieux, nous
+                                    autres gens de <placeName ref="#DUNKERQUE"
+                                    >Dunkerque</placeName>; les seigneurs fringants et empanachés du
+                                        <rs ref="#LOUISXIV">jeune roi de France</rs> que ces roi des
+                                    figures castillanes, avec leurs pourpoints noirs et leurs
+                                    fraises blanches aussi larges qu'un fromage de
+                                Ghyvelde.</said></p>
+                            <p><said who="#BELSEN">— Je dirais comme vous, mon compère,</said>
+                                reprit le bourgeois au grand feutre,<said who="#BELSEN"> si
+                                        <placeName ref="#DUNKERQUE">Dunkerque</placeName> devait
+                                    être pris au profit du <persName ref="#MAZARIN"
+                                        >Mazarin</persName>... je veux dire du <rs ref="#LOUISXIV"
+                                        >jeune roi de France</rs>... Mais qui sait si nous ne serons
+                                    pas livrés à l'excommunié... aux tètes rondes de <persName
+                                        ref="#CROMWELL">Satan-Olivier Cromwell</persName>, du vieux
+                                    Noll... comme disent ceux d'outre-mer?... Aussi, compère,
+                                    appartenir à l'Espagne ou à l'Angleterre... sur ma parole, je
+                                    donnerais le choix pour la chemise d'un don, et encore ces
+                                    salopes ne sont-ils pas au moins de la religion...</said></p>
+                            <p><said who="#BOURGEOIS1">— Allons, allons, à la grâce de Dieu, vous
+                                    avez raison, et vous parlez d'or, compère,</said> reprit l'autre
+                                    bourgeois;<said who="#BOURGEOIS1"> car, quoi qu'il arrive... le
+                                    Seigneur ne nous faudra pas... vu que bon poisson trouve
+                                    toujours poêle où frire.</said></p>
+                            <p><said who="#HARANSAURET">— Et à propos de poisson, mes maîtres, dit
+                                        <persName ref="#HARANSAURET">Haran-Sauret</persName> d'un
+                                    air important et mystérieux, je me souviens qu'en une lointaine
+                                    navigation océanique et périlleuse, nous rencontrâmes une si
+                                    furieuse mère-baleine suivie d'une file de si terribles
+                                    baleinons. que nous prîmes la mère-baleine pour un immense
+                                    promontoire, et les baleinons pour une côte très-gigantesque ;
+                                    et cela est si vrai, que le maître pilote hauturier... un nommé
+                                        <persName ref="#BUGNIET">Bugniet</persName>, juré
+                                        d'<placeName ref="#OSTENDE">Ostende</placeName>... resta
+                                    d'abord tout ébahi, puis prit son arbalète<note n="1"
+                                        place="end">C'est l'instrument que les Chaldéens appelaient
+                                        le bâton de Jacob. Les matelots l'appellent arbaleste ou
+                                        flèche, parce qu'en effet, lorsqu'on prend hauteur avec cet
+                                        instrument à quelque astre, on se met en la posture où se
+                                        mettrait quelqu'un qui viserait à un but. Il n'y a
+                                        instrument dont les nautoniers se servent plus
+                                        volontiers.</note>, à cette fin de réconnaître la hauteur de
+                                    ces terres inconnues et surprenantes, pour...</said></p>
+                            <p><said who="#BELSEN" toWhom="#HARANSAURET">— Foin !... foin!... des
+                                    bourdes et des lanternes de <persName ref="#HARANSAURET">Haran-
+                                        Sauret</persName></said>, décria le <rs ref="#BELSEN"
+                                    >bourgeois</rs> en entraînant le groupe qui descendit en grande
+                                hâte le degré de <persName ref="#CORNILLEBART">maître Cornille
+                                    Bart</persName>, comme pour échapper aux récits exagérés de son
+                                vieux serviteur; puis, se trouvant sans doute bien en sûreté en
+                                pleine rue, <persName ref="#BELSEN">maître Belsen</persName> dit
+                                encore au <rs ref="#HARANSAURET">marinier</rs> : <said who="#BELSEN"
+                                    toWhom="#HARANSAURET">— Fi! fi! <persName ref="#HARANSAURET"
+                                        >Sauret</persName>... nous prendrez-vous toujours pour des
+                                    oisons!... Fi! des pareilles pétoffes<note n="2" place="end"
+                                        >Pétoffes (vieux mot], sottises, absurdités. </note> à nous.
+                                    qui sommes trop vieux corbeaux pour une telle glu!. Allons, sans
+                                        rancune,<persName ref="#HARANSAURET">Sauret</persName> le
+                                    Véridique, et ne manquez pas de dire à <persName
+                                        ref="#CORNILLEBART">maître Cornille Bart</persName> et à <rs
+                                        ref="#FEMMEBART">mademoiselle<note n="3" place="end">Les
+                                            seules femmes des gentilshommes etaient appelées madame.
+                                        </note> sa femme</rs> toute la joie que nous ressentons de
+                                    la bonne nouvelle que vous nous avez donnée sur sa
+                                santé.</said></p>
+                </div2>
+            </div1>
+        </body>
+    </text>
+</TEI>
