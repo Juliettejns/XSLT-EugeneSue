@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Excellent travail d'encodage -->
 
-<?xml-model href="out/Jjanes_CC3_ODD.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="out/Jjanes_CC3_ODD.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="ODD/out/Jjanes_CC3_ODD.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="ODD/out/Jjanes_CC3_ODD.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <!-- Choses à faire
       -contraintes dans l'ODD:  typer le xml:id de person et place pour n'avoir que des lettres majuscules
