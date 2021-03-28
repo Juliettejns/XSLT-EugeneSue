@@ -317,7 +317,7 @@
                 <div2 type="chapitre" n="1">
                     <head> Chapitre 1</head>
                         <pb facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f13.item" n="1"/>
-                        <figure facs="image1.JPEG" type="en-tête">
+                        <figure facs="images/image1.JPEG" type="en-tête">
                             <head>Jean Bart et Louis XIV drames maritimes du XVIIe siècle par Eugène
                                 Sue</head>
                             <figDesc>Gravure de Beaucé figurant en en-tête de la page, au dessus du
@@ -351,7 +351,7 @@
                                 presque toutes celles du temps, était de forme irrégulière, avec de
                                 hautes et étroites croisées en ogives, garnies d'un treillis de
                                 plomb. La date de l'année de sa</p>
-                        <figure facs="image2.JPEG" type="milieu">
+                        <figure facs="images/image2.JPEG" type="milieu">
                             <head>Mort de Cornille Bart -Ou! Les Anglais... -PAGE 7</head>
                             <figDesc>Gravure de Beauce, au milieu de la page, représentant la mort
                                 de Cornille Bart, assis en robe dans un fauteuil et encadré de deux
