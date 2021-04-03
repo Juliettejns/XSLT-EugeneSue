@@ -6,7 +6,25 @@
     
     <xsl:output method="html" indent="yes" encoding="UTF-8"/> <!--On signale que la sortie est en html-->
     <xsl:strip-space elements="*"/> <!-- pour éviter les espaces non voulus -->
-
+    
+    <xsl:template match="TEI">
+        <html>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                <title>
+                    <xsl:value-of select="//fileDesc/titleStmt//title[@type='main']"/>
+                </title>
+            </head>
+            <body>
+                <h1><xsl:value-of select="//body/div1/head"/></h1>
+                <div>
+                    <h2><xsl:value-of select="//div2/head"/></h2>
+                    <xsl:apply-templates select="//body//p|//figure"/>
+                </div>
+            </body>
+            
+        </html>
+    </xsl:template>
     <xsl:template match="p">
         <xsl:element name="p">        
             <xsl:value-of select="."/>
