@@ -21,7 +21,7 @@
             <xsl:value-of select="concat($witfile,'index','.html')"/>
         </xsl:variable>
         <xsl:variable name="pathRoman">
-            <xsl:value-of select="concat($witfile,'roman')"/>
+            <xsl:value-of select="concat($witfile,'roman', '.html')"/>
         </xsl:variable>
         
         <!--Création du head commun à toutes les pages du site-->
