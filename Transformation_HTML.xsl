@@ -7,23 +7,69 @@
     <xsl:output method="html" indent="yes" encoding="UTF-8"/> <!--On signale que la sortie est en html-->
     <xsl:strip-space elements="*"/> <!-- pour éviter les espaces non voulus -->
     
-    <xsl:template match="TEI">
-        <html>
+    <xsl:template match="/">
+        <xsl:variable name="witfile">
+            <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
+            <!-- récupération du nom et du chemin du fichier courant -->
+        </xsl:variable>
+        
+        <!--Création des différents chemins du site-->
+        <xsl:variable name="pathAccueil">
+            <xsl:value-of select="concat($witfile,'accueil','.html')"/>
+        </xsl:variable>      
+        <xsl:variable name="pathIndex">
+            <xsl:value-of select="concat($witfile,'index','.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathRoman">
+            <xsl:value-of select="concat($witfile,'roman','.html')"/>
+        </xsl:variable>
+        
+        <!--Création du head commun à toutes les pages du site-->
+        <xsl:variable name="head">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
                 <title>
                     <xsl:value-of select="//fileDesc/titleStmt//title[@type='main']"/>
                 </title>
             </head>
-            <body>
-                <h1><xsl:value-of select="//body/div1/head"/></h1>
-                <div>
-                    <h2><xsl:value-of select="//div2/head"/></h2>
-                    <xsl:apply-templates select="//body//p|//figure"/>
-                </div>
-            </body>
-            
-        </html>
+        </xsl:variable>
+        
+        <xsl:result-document href="{$pathAccueil}"
+            method="html" indent="yes">
+            <html>
+                <xsl:value-of select="$head"/>
+                <body>
+                    <h1><xsl:value-of select="//fileDesc/titleStmt//title[@type='main']"/></h1>
+                    <h2><xsl:value-of select="//fileDesc/titleStmt//title[@type='sub']"/></h2>
+                    <span>
+                        <a href="{//distributor/@facs}">[lien vers la version imprimée Gallica]</a>
+                    </span>
+                    <ul>
+                        <li><a href="{$pathIndex}">Index des noms de personnages</a></li>
+                        <li><a href="{$pathRoman}">Édition numérique de Jean Bart et Louis XIV</a></li>
+                    </ul>
+                </body>
+            </html>
+        </xsl:result-document>
+        <xsl:result-document href="{$pathRoman}"
+            method="html" indent="yes">
+            <html>
+                <xsl:value-of select="$head"/>
+                <body>
+                    <h1><xsl:value-of select="//fileDesc/titleStmt//title[@type='main']"/></h1>
+                    <h2><xsl:value-of select="//fileDesc/titleStmt//title[@type='sub']"/></h2>
+                    <div>
+                        <a href="{//distributor/@facs}">lien vers le manuscrit</a>
+                    </div>
+                    <div>
+                        <a href="{$pathAccueil}">Retour accueil</a>
+                    </div>
+                    <div align="center">
+                        <xsl:apply-templates select="//body"/>
+                    </div>
+                </body>
+            </html>
+        </xsl:result-document>
     </xsl:template>
     <xsl:template match="p">
         <xsl:element name="p">        
