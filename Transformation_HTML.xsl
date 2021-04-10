@@ -21,7 +21,7 @@
             <xsl:value-of select="concat($witfile, 'accueil', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathBibliographie">
-            <xsl:value-of select="concat($witfile, 'accueil', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'bibliographie', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathRoman">
             <xsl:value-of select="concat($witfile, 'roman', '.html')"/>
@@ -31,6 +31,9 @@
         </xsl:variable>
         <xsl:variable name="pathIndexLieux">
             <xsl:value-of select="concat($witfile, 'indexLieu', '.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathImages">
+            <xsl:value-of select="concat($witfile, 'images', '.html')"/>
         </xsl:variable>
 
 
@@ -77,6 +80,9 @@
                                 <a class="dropdown-item" href="{$pathIndexPersonnes}">Personnes</a>
                                 <a class="dropdown-item" href="{$pathIndexLieux}">Lieux</a>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{$pathImages}">Galerie des Images</a>
                         </li>
                     </ul>
                 </div>
@@ -133,18 +139,35 @@
         </xsl:result-document>
         
         <!--PAGE DE PRESENTATION DU ROMAN-->
-        <!--<xsl:result-document href="{$pathBibliographie}" method="html" indent="yes">
+        <xsl:result-document href="{$pathBibliographie}" method="html" indent="yes">
             <html>
                 <xsl:copy-of select="$head"/>
                 <body>
                     <xsl:copy-of select="$navbar"/>
-                    <div>
-                        <h1>
-                            <xsl:value-of select="$titre1"/>
-                            <xsl:value-of select="$titre2"/>
-                        </h1>
+                    <div class="container">
+                        <div class="row text-justify" style="margin:50px;align='center'">
+                            <div class="offset-md-2 col-md-8">
+                            <h1>
+                                Informations bibliographiques
+                            </h1>
+                                <ul>
+                                    <li>Titre:&#160;<xsl:value-of select="//biblFull//title[@type='main']"/></li>
+                                    <li>Sous-titre:&#160;<xsl:value-of select="//biblFull//title[@type='sub']"/></li>
+                                    <li>Sous-sous-titre:&#160;<xsl:value-of select="//biblFull//title[@type='m']"/></li>
+                                    <li>Auteur:&#160;<xsl:value-of select="//biblFull//author[@resp='main']/forename"/>&#160;<xsl:value-of select="//biblFull//author[@resp='main']/roleName"/>&#160;<xsl:value-of select="//biblFull//author[@resp='main']/surname"/></li>
+                                    <li>Dessinateur:&#160;<xsl:value-of select="//biblFull//author[@resp='contributor']/forename"/>&#160;<xsl:value-of select="//biblFull//author[@resp='contributor']/surname"/></li>
+                                    <li>Editeur:&#160;<xsl:value-of select="//biblFull//publisher"/></li>
+                                    <li>Date et Lieu de Publication:&#160;<xsl:value-of select="//biblFull/publicationStmt/date"/>,&#160;<xsl:value-of select="//biblFull//pubPlace"/></li>
+                                    <li>Emplacement de l'ouvrage:&#160;<xsl:value-of select="//distributor"/></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>                    
                 </body>
+                <xsl:copy-of select="$footer"/>
             </html>
         </xsl:result-document>-->
 
@@ -155,11 +178,11 @@
                 <body>
                     <xsl:copy-of select="$navbar"/>                      
                         <div class="container">
-                            <div class="row" style="margin:50px;align='center'">
+                            <div class="row text-justify" style="margin:50px;align='center'">
                                 <div class="offset-md-2 col-md-8">
                                     <h3><xsl:value-of select="//body/div1/head"/></h3>
                                     <h4><xsl:value-of select="//body//div2/head"/></h4>
-                                    <xsl:apply-templates select="//div3 except //note/p except //figure[@facs='images/image1.JPEG'] "/>                        
+                                    <xsl:apply-templates select="//div3 except //note/p"/>                        
                                 </div>
                             </div>
                             <div class="row" style="margin:50px">
@@ -183,10 +206,14 @@
                 <xsl:copy-of select="$head"/>
                 <body>
                     <xsl:copy-of select="$navbar"/>
-                    <div>
-                        <h1>Index de Personnes</h1>
-                        <div>
-                            <xsl:call-template name="personnes"/>
+                    <div class="container">
+                        <div class="row" style="margin:50px">                           
+                            <div class="offset-md-2 col-md-8">
+                                <h1>Index de Personnes</h1>
+                                <div>
+                                    <xsl:call-template name="personnes"/>                            
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
@@ -202,10 +229,14 @@
                 <xsl:copy-of select="$head"/>
                 <body>
                     <xsl:copy-of select="$navbar"/>
-                    <div>
-                        <h1>Index de Lieux</h1>
-                        <div>
-                            <xsl:call-template name="lieux"/>
+                    <div class="container">
+                        <div class="row" style="margin:50px">                           
+                            <div class="offset-md-2 col-md-8">
+                                <h1>Index de Personnes</h1>
+                                <div>
+                                    <xsl:call-template name="lieux"/>                            
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
@@ -215,7 +246,29 @@
             </html>
         </xsl:result-document>
 
-
+        <!--PAGE PRESENTANT LES IMAGES CONTENANT DANS LE ROMAN-->
+        <xsl:result-document href="{$pathImages}" method="html" indent="yes">
+            <html>
+                <xsl:copy-of select="$head"/>
+                <body>
+                    <xsl:copy-of select="$navbar"/>
+                    <div class="container">
+                        <div class="row" style="margin:50px">                           
+                            <div class="offset-md-2 col-md-8">
+                                <h1>Galerie des Illustrations</h1>
+                                <div>
+                                    <xsl:apply-templates select="//figure"/>                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
+                </body>
+            </html>
+        </xsl:result-document>
+        
     </xsl:template>
 
 
@@ -235,7 +288,7 @@
             <xsl:text>[</xsl:text>
             <xsl:value-of select="@n"/>
             <xsl:text>]</xsl:text>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="* except //figure"/>
         </xsl:element>
     </xsl:template>
     
@@ -247,19 +300,20 @@
 
     <!--REGLE D'AFFICHAGE DES IMAGES-->
    <xsl:template match="figure">
-        <!--<xsl:element name="figure">
+        <xsl:element name="figure">
             <xsl:element name="img">
                 <xsl:attribute name="src">
                     <xsl:value-of select="@facs"/>
                 </xsl:attribute>
                 <xsl:attribute name="width">
-                    <xsl:text>500</xsl:text>
+                    <xsl:text>300</xsl:text>
                 </xsl:attribute>
             </xsl:element>
             <xsl:element name="figcaption">
-                <xsl:apply-templates select="./head/text()"/>
+                <xsl:apply-templates select="./head"/><br/>
+                Emplacement: <xsl:value-of select="@type"/> de la page <xsl:value-of select="ancestor::div3/@n"/>,&#160;Chapitre <xsl:value-of select="ancestor::div2/@n"/>
             </xsl:element>
-        </xsl:element>-->
+        </xsl:element>
     </xsl:template>
 
     <!--REGLES DES NOTES-->
@@ -348,7 +402,7 @@
                     <xsl:variable name="idPlace">
                         <xsl:value-of select="@xml:id"/>
                     </xsl:variable>
-                    <xsl:text>:</xsl:text>
+                    <xsl:text>:&#160;</xsl:text>
                     <xsl:for-each-group
                         select="ancestor::TEI//body//placeName[replace(@ref, '#', '') = $idPlace]"
                         group-by="ancestor::div3">
