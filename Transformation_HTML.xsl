@@ -17,8 +17,11 @@
         <xsl:variable name="pathAccueil">
             <xsl:value-of select="concat($witfile,'accueil','.html')"/>
         </xsl:variable>      
-        <xsl:variable name="pathIndex">
-            <xsl:value-of select="concat($witfile,'index','.html')"/>
+        <xsl:variable name="pathIndexPersonnes">
+            <xsl:value-of select="concat($witfile,'indexPersonne','.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathIndexLieux">
+            <xsl:value-of select="concat($witfile, 'indexLieu', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathRoman">
                 <xsl:value-of select="concat($witfile,'roman', '.html')"/>
@@ -40,7 +43,7 @@
         <xsl:result-document href="{$pathAccueil}"
             method="html" indent="yes">
             <html>
-                <xsl:value-of select="$head"/>
+                <xsl:copy-of select="$head"/>
                 <body>
                     <h1><xsl:value-of select="$titre1"/></h1>
                     <h2><xsl:value-of select="$titre2"/></h2>
@@ -48,7 +51,9 @@
                         <a href="{//distributor/@facs}">[lien vers la version imprimée Gallica]</a>
                     </span>
                     <ul>
-                        <li><a href="{$pathIndex}">Index des noms de personnages</a></li>
+                        <li><a href="{$pathIndexPersonnes}">Index des noms de personnages</a></li>
+                        <li><a href="{$pathIndexLieux}">Index des noms de personnages</a></li>
+                        
                         <li><a href="{$pathRoman}">Édition numérique de Jean Bart et Louis XIV</a></li>
                     </ul>
                 </body>
@@ -57,7 +62,7 @@
      <xsl:result-document href="{$pathRoman}"
                 method="html" indent="yes">
                 <html>
-                    <xsl:value-of select="$head"/>
+                    <xsl:copy-of select="$head"/>
                     <body>
                         <h1><xsl:value-of select="$titre1"/></h1>
                         <h2><xsl:value-of select="$titre2"/></h2>
@@ -68,23 +73,41 @@
                             <a href="{$pathAccueil}">Retour accueil</a>
                         </div>
                         <div align="center">
-                            <xsl:apply-templates select="//div3/node() except //note/p"/>
+                            <xsl:apply-templates select="//div3 except //note/p"/>
                         </div>
                         <div>
                             <h4>Notes</h4>
                             <xsl:apply-templates select="//note/p"/>
                         </div>
-                        <div>
-                            <h4>Index de personnes</h4>
-                            <xsl:call-template name="personnes"/>
-                        </div>
-                        <div>
-                            <h4>Index de lieux</h4>
-                            <xsl:call-template name="lieux"/>
-                        </div>
                     </body>
                 </html>
         </xsl:result-document>
+        <xsl:result-document href="{$pathIndexPersonnes}"
+            method="html" indent="yes">
+            <html>
+                <xsl:copy-of select="$head"/>
+                <body>
+                    <h1>Index de Personnes</h1>
+                    <div>
+                        <xsl:call-template name="personnes"/>
+                    </div>
+                </body>
+            </html>
+        </xsl:result-document>
+        <xsl:result-document href="{$pathIndexLieux}"
+            method="html" indent="yes">
+            <html>
+                <xsl:copy-of select="$head"/>
+                <body>
+                    <h1>Index de Lieux</h1>
+                    <div>
+                        <xsl:call-template name="lieux"/>
+                    </div>
+                </body>
+            </html>
+        </xsl:result-document>
+        
+                 
     </xsl:template>
     
     
@@ -99,10 +122,17 @@
     
    <!--REGLE D'AFFICHAGE DU TEXTE-->
     <xsl:template match="div3">
+        <!-- J'insère chaque page dans un div afin d'avoir une vue d'ensemble 
+            pour construire mon index. Cependant, par un souci d'ergonomie, il est 
+            plus intéressant de garder les deux div sur la même page HTML, plutôt 
+            que de changer de page-->
         <xsl:element name="div">
             <xsl:attribute name="id">
                 <xsl:value-of select="@n"/>
             </xsl:attribute>
+            <xsl:text>[</xsl:text>
+            <xsl:value-of select="@n"/>
+            <xsl:text>]</xsl:text>            
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
@@ -140,7 +170,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    <xsl:template match="note/p">
+    <xsl:template name="notes" match="note/p">
         <!--Règle permettant d'afficher le texte des notes de bas de page-->
         <xsl:element name="p">
             <xsl:attribute name="id">
