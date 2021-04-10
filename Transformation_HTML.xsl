@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0"
-    xpath-default-namespace="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="xs"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0" exclude-result-prefixes="xs tei"
     version="2.0">
     
     <xsl:output method="html" indent="yes" encoding="UTF-8"/> <!--On signale que la sortie est en html-->
     <xsl:strip-space elements="*"/> <!-- pour éviter les espaces non voulus -->
+
 
     <xsl:template match="/">
         <xsl:variable name="witfile">
@@ -13,28 +14,38 @@
             <!-- récupération du nom et du chemin du fichier courant -->
         </xsl:variable>
         
-        <!--Création des différents chemins du site-->
+        <!--CREATION DES VARIABLES CONTENANT LES CHEMINS DE CHAQUE PAGE HTML-->
         <xsl:variable name="pathAccueil">
             <xsl:value-of select="concat($witfile,'accueil','.html')"/>
-        </xsl:variable>      
+        </xsl:variable> 
+        <xsl:variable name="pathRoman">
+            <xsl:value-of select="concat($witfile,'roman', '.html')"/>            
+        </xsl:variable> 
+        <xsl:variable name="pathAPropos">
+            <xsl:value-of select="concat($witfile, 'apropos', '.html')"/>
+        </xsl:variable>
+        <xsl:variable name="pathPresentation">
+            <xsl:value-of select="concat($witfile, 'presentation', '.html')"/>
+        </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
             <xsl:value-of select="concat($witfile,'indexPersonne','.html')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexLieux">
             <xsl:value-of select="concat($witfile, 'indexLieu', '.html')"/>
         </xsl:variable>
-        <xsl:variable name="pathRoman">
-                <xsl:value-of select="concat($witfile,'roman', '.html')"/>
-            
-        </xsl:variable>
+
         
-        
+        <!--CREATION DES VARIABLES RAPPELEES FREQUEMMENT-->
         <!--Création du head commun à toutes les pages du site-->
         <xsl:variable name="titre1" select="//fileDesc/titleStmt//title[@type='main']"/>
         <xsl:variable name="titre2" select="//fileDesc/titleStmt//title[@type='sub']"/>
         <xsl:variable name="head">
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                <link rel="stylesheet"
+                    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                    crossorigin="anonymous"/>
                 <title>
                     <xsl:value-of select="$titre1"/>
                 </title>
