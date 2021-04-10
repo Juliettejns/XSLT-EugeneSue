@@ -133,7 +133,7 @@
         </xsl:result-document>
         
         <!--PAGE DE PRESENTATION DU ROMAN-->
-        <xsl:result-document href="{$pathBibliographie}" method="html" indent="yes">
+        <!--<xsl:result-document href="{$pathBibliographie}" method="html" indent="yes">
             <html>
                 <xsl:copy-of select="$head"/>
                 <body>
@@ -146,36 +146,34 @@
                     </div>
                 </body>
             </html>
-        </xsl:result-document>
+        </xsl:result-document>-->
 
         <!--PAGE D'AFFICHAGE DU TEXTE ET DE SES NOTES-->
         <xsl:result-document href="{$pathRoman}" method="html" indent="yes">
             <html>
                 <xsl:copy-of select="$head"/>
                 <body>
-                    <xsl:copy-of select="$navbar"/>
-                    <div>
-                        <h1>
-                            <xsl:value-of select="$titre1"/>
-                        </h1>
-                        <h2>
-                            <xsl:value-of select="$titre2"/>
-                        </h2>                        
-                        <div>
-                            <a href="{$pathAccueil}">Retour accueil</a>
-                        </div>
-                        <div align="center">
-                            <xsl:apply-templates select="//div3 except //note/p"/>
-                        </div>
-                        <div>
+                    <xsl:copy-of select="$navbar"/>                      
+                        <div class="container">
+                            <div class="row" style="margin:50px;align='center'">
+                                <div class="offset-md-2 col-md-8">
+                                    <h3><xsl:value-of select="//body/div1/head"/></h3>
+                                    <h4><xsl:value-of select="//body//div2/head"/></h4>
+                                    <xsl:apply-templates select="//div3 except //note/p except //figure[@facs='images/image1.JPEG'] "/>                        
+                                </div>
+                            </div>
+                            <div class="row" style="margin:50px">
                             <h4>Notes</h4>
-                            <xsl:apply-templates select="//note/p"/>
+                                <div>
+                                    <xsl:apply-templates select="//note/p"/>                                                    
+                                </div>
+                            </div>
                         </div>
-                    </div>
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
                 </body>
+                <xsl:copy-of select="$footer"/>
             </html>
         </xsl:result-document>
 
@@ -222,18 +220,6 @@
 
 
     <!--TEMPLATES-->
-    <!--Affichage des titres de la structure globale du texte:
-    titres de chapitres et livres, paragraphes structurés, images et notes-->
-    <xsl:template match="div1/head">
-        <h1>
-            <xsl:value-of select="."/>
-        </h1>
-    </xsl:template>
-    <xsl:template match="div2/head">
-        <h2>
-            <xsl:value-of select="."/>
-        </h2>
-    </xsl:template>
 
     <!--REGLE D'AFFICHAGE DU TEXTE-->
     <xsl:template match="div3">
@@ -241,6 +227,7 @@
             pour construire mon index. Cependant, par un souci d'ergonomie, il est 
             plus intéressant de garder les deux div sur la même page HTML, plutôt 
             que de changer de page-->
+        <hr/>
         <xsl:element name="div">
             <xsl:attribute name="id">
                 <xsl:value-of select="@n"/>
@@ -251,15 +238,16 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template match="p">
         <xsl:element name="p">
-            <xsl:apply-templates/>
-        </xsl:element>
+                <xsl:apply-templates/>
+            </xsl:element>
     </xsl:template>
 
     <!--REGLE D'AFFICHAGE DES IMAGES-->
-    <xsl:template match="figure">
-        <xsl:element name="figure">
+   <xsl:template match="figure">
+        <!--<xsl:element name="figure">
             <xsl:element name="img">
                 <xsl:attribute name="src">
                     <xsl:value-of select="@facs"/>
@@ -271,7 +259,7 @@
             <xsl:element name="figcaption">
                 <xsl:apply-templates select="./head/text()"/>
             </xsl:element>
-        </xsl:element>
+        </xsl:element>-->
     </xsl:template>
 
     <!--REGLES DES NOTES-->
