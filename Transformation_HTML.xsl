@@ -40,6 +40,8 @@
                 </title>
             </head>
         </xsl:variable>
+        
+        <!--PAGE d'ACCUEIL-->
         <xsl:result-document href="{$pathAccueil}"
             method="html" indent="yes">
             <html>
@@ -52,13 +54,15 @@
                     </span>
                     <ul>
                         <li><a href="{$pathIndexPersonnes}">Index des noms de personnages</a></li>
-                        <li><a href="{$pathIndexLieux}">Index des noms de personnages</a></li>
+                        <li><a href="{$pathIndexLieux}">Index des noms de lieux</a></li>
                         
                         <li><a href="{$pathRoman}">Édition numérique de Jean Bart et Louis XIV</a></li>
                     </ul>
                 </body>
             </html>
         </xsl:result-document>
+        
+     <!--PAGE D'AFFICHAGE DU TEXTE ET DE SES NOTES-->
      <xsl:result-document href="{$pathRoman}"
                 method="html" indent="yes">
                 <html>
@@ -82,6 +86,8 @@
                     </body>
                 </html>
         </xsl:result-document>
+        
+        <!--PAGE INDEX DES PERSONNES-->
         <xsl:result-document href="{$pathIndexPersonnes}"
             method="html" indent="yes">
             <html>
@@ -94,6 +100,8 @@
                 </body>
             </html>
         </xsl:result-document>
+        
+        <!--PAGE INDEX DE LIEUX-->
         <xsl:result-document href="{$pathIndexLieux}"
             method="html" indent="yes">
             <html>
@@ -111,6 +119,7 @@
     </xsl:template>
     
     
+    <!--TEMPLATES-->
     <!--Affichage des titres de la structure globale du texte:
     titres de chapitres et livres, paragraphes structurés, images et notes-->
     <xsl:template match="div1/head">
@@ -170,7 +179,7 @@
             </xsl:element>
         </xsl:element>
     </xsl:template>
-    <xsl:template name="notes" match="note/p">
+    <xsl:template match="note/p">
         <!--Règle permettant d'afficher le texte des notes de bas de page-->
         <xsl:element name="p">
             <xsl:attribute name="id">
@@ -185,16 +194,18 @@
     
     <!--REGLES DES INDEX-->
     <xsl:template name="personnes">
+        <xsl:element name="ul">
         <!--Règle permettant la création et l'affichage d'un index de personnes-->
         <xsl:for-each select="//particDesc//person/persName">
             <xsl:sort select="./surname" order="ascending"/>
-            <xsl:element name="p">
+            <xsl:element name="li">
+                <xsl:element name="b">
                 <xsl:choose>
                     <xsl:when test="./forename">            
                             <xsl:value-of select="./forename"/>&#160;<xsl:value-of select="./surname"/>
                             <xsl:choose>
                                 <xsl:when test="./roleName">
-                                    &#160;<xsl:value-of select="./roleName"/>
+                                    ,&#160;<xsl:value-of select="./roleName"/>
                                 </xsl:when>
                             </xsl:choose>                       
                     </xsl:when>
@@ -202,10 +213,11 @@
                         <xsl:value-of select="."/>      
                     </xsl:otherwise>
                 </xsl:choose>
+                </xsl:element>
                     <xsl:variable name="idPerson">
                         <xsl:value-of select="parent::person/@xml:id"/>
                     </xsl:variable>
-                    <xsl:text>:</xsl:text>
+                    <xsl:text>:&#160;</xsl:text>
                 <xsl:for-each-group select="ancestor::TEI//body//persName[replace(@ref, '#','')=$idPerson]" group-by="ancestor::div3">
                     <xsl:value-of select="ancestor::div3/@n"/> 
                     <xsl:if test="position()!= last()">, </xsl:if>
@@ -218,13 +230,17 @@
                 </xsl:if>           
             </xsl:element>
         </xsl:for-each>
+        </xsl:element>
     </xsl:template>
     <xsl:template name="lieux">
+        <xsl:element name="ul">  
         <!--Règle permettant la création et l'affichage d'un index de personnes-->
-        <xsl:for-each select="//listPlace/place">
+        <xsl:for-each select="//listPlace/place">          
             <xsl:sort select="./placeName" order="ascending"/>
-            <xsl:element name="p">
-                <xsl:value-of select="./placeName"/>
+            <xsl:element name="li">
+                <xsl:element name="b">
+                    <xsl:value-of select="./placeName"/>
+                </xsl:element>
                 <xsl:if test="./district">
                     , &#160;<xsl:value-of select="./district"/>
                 </xsl:if>
@@ -236,7 +252,7 @@
                 </xsl:variable>
                 <xsl:text>:</xsl:text>
                 <xsl:for-each-group select="ancestor::TEI//body//placeName[replace(@ref, '#','')=$idPlace]" group-by="ancestor::div3">
-                    <xsl:value-of select="ancestor::div3/@n"/> 
+                        <xsl:value-of select="ancestor::div3/@n"/>                   
                     <xsl:if test="position()!= last()">, </xsl:if>
                     <xsl:if test="position() = last()">.</xsl:if>
                 </xsl:for-each-group>
@@ -247,5 +263,6 @@
                 </xsl:if>           
             </xsl:element>
         </xsl:for-each>
+        </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
