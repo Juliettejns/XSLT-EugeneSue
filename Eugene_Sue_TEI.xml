@@ -80,7 +80,7 @@
                     <place xml:id="DUNKERQUE">
                         <placeName>Dunkerque</placeName>
                         <note> Ville portuaire de Flandres aux mains des Habsbourgs depuis 1520,
-                            elle est au cours des rivalités entre les rois d'Espagne et de France. </note>
+                            elle est au cours des rivalités entre les rois d'Espagne et de France.</note>
                        <!-- Très bien -->
                         <listEvent>
                             <head>Batailles de Dunkerque</head>
@@ -195,7 +195,7 @@
                             <roleName type="noble">Marquis d'Hocquincourt</roleName>
                         </persName>
                         <note> (1599-1658) Officier sous Louis XIII et <persName ref="#LOUISXIV"
-                                >Louis XVI</persName>, maréchal de France</note>
+                                >Louis XVI</persName>, maréchal de France.</note>
                     </person>
                     <person xml:id="JUANDAUTRICHE">
                         <persName>
@@ -316,7 +316,7 @@
                 <head>Livre I</head>
                 <div2 type="chapitre" n="1">
                     <head> Chapitre 1</head>
-                        <pb facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f13.item" n="1"/>
+                        <div3 type="page" facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f13.item" n="1">
                         <figure facs="images/image1.JPEG" type="en-tête">
                             <head>Jean Bart et Louis XIV drames maritimes du XVIIe siècle par Eugène
                                 Sue</head>
@@ -378,7 +378,8 @@
                             <p part="I"> Enfin, après quelques moments d'attente, l'épaisse porte de
                                 chêne noir qui surmontait le degré s'ouvrit, et <rs
                                     ref="#HARANSAURET">un marinier</rs> à </p>
-                        <pb facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f14.item" n="2"/>
+                        </div3>
+                        <div3 type="page" facs="https://gallica.bnf.fr/ark:/12148/bpt6k6365618w/f14.item" n="2">
                         <cb n="1"/>
                             <p part="F">cheveux gris, au visage maigre et hâlé, d'une taille
                                 moyenne, et vêtu d'un justaucorps de serge d'Aumale bleue, à boutons
@@ -386,8 +387,8 @@
                                 d'un geste significatif, dit très-bas aux gens qui composaient ce
                                 groupe : <said who="#HARANSAURET">— <persName ref="#CORNILLEBART"
                                         >Maître Cornille</persName> vient de s'éveiller tout à
-                                    l'heure : le physicien <note n="1" place="end">Le
-                                        médecin.</note> avait dit ce matin que, s'il dormait trois
+                                    l'heure : le physicien <note n="1" place="end"><p>Le
+                                        médecin.</p></note> avait dit ce matin que, s'il dormait trois
                                     heures, cela serait bien ; or, <persName ref="#CORNILLEBART"
                                         >maître Cornille</persName> en a dormi quatre : c'est donc
                                     mieux que bien.</said></p>
@@ -397,9 +398,9 @@
                                     bons vœux pour <persName ref="#CORNILLEBART">maître Cornille
                                         Bart</persName>.</said></p>
                             <p><said who="#BUSCHE">— Et par les reliques de saint Omer!</said>
-                                s'écria un jeune patron de busche<note n="2" place="end">Buste ou
+                                s'écria un jeune patron de busche<note n="2" place="end"><p>Buste ou
                                     busche, sorte de bâtiment dont on se sert pour la pêche du
-                                    hareng dans les mers de Hollande et d'Angleterre. </note>, <said
+                                    hareng dans les mers de Hollande et d'Angleterre. </p></note>, <said
                                     who="#BUSCHE">la première fois que ces chiens d'Anglais me
                                     laisseront jeter mon filet saint vers la haute mer, tout le
                                     poisson que je prendrai sera vendu afin de faire dire une messe
@@ -410,7 +411,7 @@
                                     fils,</said> reprit le <rs ref="#HARANSAURET"
                                     >marinier</rs>,<said who="#HARANSAURET"> mais plus bas, pour
                                     l'amour du ciel, plus bas, car vous béez bien comme un don<note
-                                        n="3" place="end">Un Espagnol.</note> qu'on veut
+                                        n="3" place="end"><p>Un Espagnol.</p></note> qu'on veut
                                     peigner.</said> Puis, s'adressant à un grave bourgeois coiffé
                                 d'un large feutre et vêtu d'un pourpoint à la flamande :<said
                                     who="#HARANSAURET" toWhom="#BELSEN">— Et qu'ont fait les dons
@@ -433,15 +434,15 @@
                                         Cueva</persName>.</said></p>
                             <p><said who="#HARANSAURET" toWhom="#BELSEN">— Oh! là... <persName
                                         ref="#BELSEN">maître Belsen</persName>, voici encore une
-                                    brave écharpe bleue<note n="4" place="end">Couleur de M. le
-                                        prince de Condé. </note> qui échappe à la hache du bourreau
+                                    brave écharpe bleue<note n="4" place="end"><p>Couleur de M. le
+                                        prince de Condé. </p></note> qui échappe à la hache du bourreau
                                     par une mousquetade ; aussi bien le seigneur maréchal avait le
                                     pronostic d'une fâcheuse étoile sur son visage; je l'ai bien vu
                                     le jour où il remit au capitaine de la colonelle l'étendard de
                                         <persName ref="#CONDE">M. le Prince</persName>..., un noble
                                     étendard de satin blanc, ma foi, tout cantonné dé fleurs de lis
                                     d'or, avec une frange de soie isabelle et rouge<note n="5"
-                                        place="end">Couleurs des livrées de M le Prince.</note>;
+                                        place="end"><p>Couleurs des livrées de M le Prince.</p></note>;
                                     c'est ça qui aurait fait un fier tendelet pour le carrosse d'une
                                     galère capitane... ah! et puis on avait fait sur l'étendard une
                                     grande flamme qui sortait vivement d'un monceau de bois. et
@@ -451,17 +452,17 @@
                             <p><said who="#BELSEN" toWhom="#HARANSAURET">— Oui,</said> dit le <rs
                                     ref="#BELSEN">bourgeois</rs> d'un air triste et chagrin; <said
                                     who="#BELSEN" toWhom="#HARANSAURET"> oui, oui, des mots
-                                    latins... <foreign xml:lang="la">Splendescam, da materiam</foreign><note n="6" place="end">Devise
-                                        de M. le prince de Condé.</note>, ce qui veut dire :
+                                    latins... <foreign xml:lang="la">Splendescam, da materiam</foreign><note n="6" place="end"><p>Devise
+                                        de M. le prince de Condé.</p></note>, ce qui veut dire :
                                     Donnez-moi de la matière, et je resplendirai... Or, la matière,
                                     c'est nos pistoles et nos magasins; la matière, c'est enfin nous
                                     autres bourgeois trafiquants et armateurs de <placeName
                                         ref="#DUNKERQUE">Dunkerque</placeName>, qui, pendant de
                                     pareils sièges, ne pouvons vendre une aune de serge, ou faire
-                                    sortir une bélandre<note n="7" place="end">Bélandre, en
+                                    sortir une bélandre<note n="7" place="end"><p>Bélandre, en
                                         hollandais bylander, dont le gréément différait peu de celui
                                         du brigantiu. Ces bâtiments étaient plats et avaient besoin
-                                        d'une semelle ou dérive.</note> du havre. Quant à ce qui
+                                        d'une semelle ou dérive.</p></note> du havre. Quant à ce qui
                                     resplendit, oh! oh! ce sont trompettes de gloire, écharpes
                                     dorées, casques de bataille, et autres engins de renommée,
                                     inutiles et pervers.</said></p>
@@ -502,14 +503,14 @@
                                     et cela est si vrai, que le maître pilote hauturier... un nommé
                                         <persName ref="#BUGNIET">Bugniet</persName>, juré
                                         d'<placeName ref="#OSTENDE">Ostende</placeName>... resta
-                                    d'abord tout ébahi, puis prit son arbalète<note n="1"
-                                        place="end">C'est l'instrument que les Chaldéens appelaient
+                                    d'abord tout ébahi, puis prit son arbalète<note n="8"
+                                        place="end"><p>C'est l'instrument que les Chaldéens appelaient
                                         le bâton de Jacob. Les matelots l'appellent arbaleste ou
                                         flèche, parce qu'en effet, lorsqu'on prend hauteur avec cet
                                         instrument à quelque astre, on se met en la posture où se
                                         mettrait quelqu'un qui viserait à un but. Il n'y a
                                         instrument dont les nautoniers se servent plus
-                                        volontiers.</note>, à cette fin de réconnaître la hauteur de
+                                        volontiers.</p></note>, à cette fin de réconnaître la hauteur de
                                     ces terres inconnues et surprenantes, pour...</said></p>
                             <p><said who="#BELSEN" toWhom="#HARANSAURET">— Foin !... foin!... des
                                     bourdes et des lanternes de <persName ref="#HARANSAURET">Haran-
@@ -522,17 +523,18 @@
                                 encore au <rs ref="#HARANSAURET">marinier</rs> : <said who="#BELSEN"
                                     toWhom="#HARANSAURET">— Fi! fi! <persName ref="#HARANSAURET"
                                         >Sauret</persName>... nous prendrez-vous toujours pour des
-                                    oisons!... Fi! des pareilles pétoffes<note n="2" place="end"
-                                        >Pétoffes (vieux mot], sottises, absurdités. </note> à nous.
+                                    oisons!... Fi! des pareilles pétoffes<note n="9" place="end"
+                                        ><p>Pétoffes (vieux mot], sottises, absurdités. </p></note> à nous.
                                     qui sommes trop vieux corbeaux pour une telle glu!. Allons, sans
                                         rancune,<persName ref="#HARANSAURET">Sauret</persName> le
                                     Véridique, et ne manquez pas de dire à <persName
                                         ref="#CORNILLEBART">maître Cornille Bart</persName> et à <rs
-                                        ref="#FEMMEBART">mademoiselle<note n="3" place="end">Les
+                                        ref="#FEMMEBART">mademoiselle<note n="10" place="end"><p>Les
                                             seules femmes des gentilshommes etaient appelées madame.
-                                        </note> sa femme</rs> toute la joie que nous ressentons de
+                                        </p></note> sa femme</rs> toute la joie que nous ressentons de
                                     la bonne nouvelle que vous nous avez donnée sur sa
                                 santé.</said></p>
+                        </div3>
                 </div2>
             </div1>
         </body>
