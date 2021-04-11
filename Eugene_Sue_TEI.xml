@@ -249,7 +249,10 @@
                         </persName>
                         <note>(1621-1686) Prince et général Français.</note>
                     </person>
-                    <person xml:id="LOCLIART"/>
+                    <person xml:id="LOCLIART">
+                        <persName>Lord Locliart</persName>
+                        <note>Général anglais.</note>
+                    </person>
                     <person xml:id="CROMWELL">
                         <persName>
                             <forename>Oliver</forename>
@@ -257,7 +260,9 @@
                         <note>(1599-1658) Homme politique anglais qui prend part à l'établissement
                             du Commonwealth et en devient le lord-protecteur.</note>
                     </person>
-                    <person xml:id="UDE"/>
+                    <person xml:id="UDE">
+                        <persName>Marquis de Ude</persName>
+                    </person>
 
                 </listPerson>
 
@@ -270,11 +275,17 @@
                                 >Cornille Bart</persName>
                         </note>
                     </person>
-                    <person xml:id="BELSEN"/>
+                    <person xml:id="BELSEN">
+                        <persName>Maître Belsen</persName>
+                        <note>Bourgeois de Duunkerque</note>
+                    </person>
                     <person xml:id="BOURGEOIS1"/>
                     <person xml:id="BOURGEOIS2"/>
                     <person xml:id="BUSCHE"/>
-                    <person xml:id="BUGNIET"/>
+                    <person xml:id="BUGNIET">
+                        <persName>Bugniet</persName>
+                        <note>Juré d'Ostende</note>
+                    </person>
                 </listPerson>
                 <listPerson type="groupes">
                     <!-- Très bien -->
@@ -363,8 +374,8 @@
                                 façade; enfin, au-dessus des fenêtres du rez-de-chaussée, à gauche
                                 du degré et au niveau de la rue, une porte en saillie, garnie de
                                 larges ferrures, donnait entrée dans la cave.</p>
-                            <p>Nous l'avons dit un assez grand nombre de <persName ref="#BOURGEOIS"
-                                    >bourgeois </persName> entourait cette demeure, et, quoiqu'on
+                            <p>Nous l'avons dit un assez grand nombre de <rs ref="#BOURGEOIS"
+                                    >bourgeois </rs> entourait cette demeure, et, quoiqu'on
                                 entendît de loin à loin le bruit de l'artillerie des forts, qui
                                 répondait sourdement aux batteries <rs ref="#ANGLAIS">anglaises</rs>
                                 et <rs ref="#FRANCAIS">françaises</rs>, les progrès du siège ne
