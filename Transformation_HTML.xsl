@@ -18,22 +18,22 @@
 
         <!--CREATION DES VARIABLES CONTENANT LES CHEMINS DE CHAQUE PAGE HTML-->
         <xsl:variable name="pathAccueil">
-            <xsl:value-of select="concat($witfile, 'accueil', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/accueil', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathBibliographie">
-            <xsl:value-of select="concat($witfile, 'bibliographie', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/bibliographie', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathRoman">
-            <xsl:value-of select="concat($witfile, 'roman', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/roman', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
-            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexPersonne', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexLieux">
-            <xsl:value-of select="concat($witfile, 'indexLieu', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexLieu', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathImages">
-            <xsl:value-of select="concat($witfile, 'images', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/images', '.html')"/>
         </xsl:variable>
 
 
@@ -110,7 +110,7 @@
                         <div class="blocks">
                             <!--Ajout de l'image d'entête de début du livre-->
                             <center>
-                                <img src="images/image1.JPEG" width="500"/>
+                                <img src="../images/image1.JPEG" width="500"/>
                             </center>
                         </div>
 
@@ -310,7 +310,8 @@
             <xsl:element name="img"> 
                 <!--Récupération du chemin de l'image dans le git-->
                 <xsl:attribute name="src">
-                    <xsl:value-of select="@facs"/>
+                    <!--Le dossier images n'étant pas au même niveau pour les pages html et le fichier tei, j'ajoute un ../ afin d'y accéder-->
+                    <xsl:text>../</xsl:text><xsl:value-of select="@facs"/>
                 </xsl:attribute>
                 <!--On réduit un peu les images car étant trop grandes-->
                 <xsl:attribute name="width">
@@ -464,7 +465,7 @@
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
-            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexPersonne', '.html')"/>
         </xsl:variable>
         <!--Création d'une balise a avec un attribut href contenant: url de l'index de personnes#nom de la personne-->
         <xsl:element name="a">
@@ -482,7 +483,7 @@
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
-            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexLieu', '.html')"/>
         </xsl:variable>
         <!--Création d'une balise a avec un attribut href contenant: url de l'index de lieux # nom du lieu-->
         <xsl:element name="a">
@@ -505,3 +506,4 @@
         <li>Emplacement de l'ouvrage:&#160;<xsl:value-of select="//distributor"/></li>       
     </xsl:template>
 </xsl:stylesheet>
+
