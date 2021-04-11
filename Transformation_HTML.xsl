@@ -256,7 +256,8 @@
                         <div class="row" style="margin:50px">                           
                             <div class="offset-md-2 col-md-8">
                                 <h1>Galerie des Illustrations</h1>
-                                <div>
+                                <br/>
+                                <div align="center">
                                     <xsl:apply-templates select="//figure"/>                            
                                 </div>
                             </div>
@@ -350,7 +351,10 @@
             <xsl:for-each select="//particDesc//person/persName">
                 <xsl:sort select="./surname" order="ascending"/>
                 <xsl:element name="li">
-                    <xsl:element name="b">
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="parent::person/@xml:id"/>
+                    </xsl:attribute>
+                    <xsl:element name="b">particDesc/
                         <xsl:choose>
                             <xsl:when test="./forename">
                                 <xsl:value-of select="./forename"/>&#160;<xsl:value-of
@@ -392,8 +396,11 @@
             <xsl:for-each select="//listPlace/place">
                 <xsl:sort select="./placeName" order="ascending"/>
                 <xsl:element name="li">
-                    <xsl:element name="b">
-                        <xsl:value-of select="./placeName"/>
+                    <xsl:attribute name="id">
+                        <xsl:value-of select="@xml:id"/>
+                    </xsl:attribute>
+                    <xsl:element name="b">                       
+                            <xsl:value-of select="./placeName"/>
                     </xsl:element>
                     <xsl:if test="./district"> , &#160;<xsl:value-of select="./district"/>
                     </xsl:if>
@@ -417,6 +424,39 @@
                     </xsl:if>
                 </xsl:element>
             </xsl:for-each>
+        </xsl:element>
+    </xsl:template>
+    
+    
+    <xsl:template match="body//persName[@ref]">
+        <xsl:variable name="witfile">
+            <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
+            <!-- récupération du nom et du chemin du fichier courant -->
+        </xsl:variable>
+        <xsl:variable name="pathIndexPersonnes">
+            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+        </xsl:variable>
+        <xsl:element name="a">
+            <xsl:attribute name="href">
+                <xsl:copy-of select="$pathIndexPersonnes"/><xsl:value-of select="@ref"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    
+    <xsl:template match="body//placeName[@ref]">
+        <xsl:variable name="witfile">
+            <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
+            <!-- récupération du nom et du chemin du fichier courant -->
+        </xsl:variable>
+        <xsl:variable name="pathIndexPersonnes">
+            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+        </xsl:variable>
+        <xsl:element name="a">
+            <xsl:attribute name="href">
+                <xsl:copy-of select="$pathIndexPersonnes"/><xsl:value-of select="@ref"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
