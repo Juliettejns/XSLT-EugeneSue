@@ -249,7 +249,10 @@
                         </persName>
                         <note>(1621-1686) Prince et général Français.</note>
                     </person>
-                    <person xml:id="LOCLIART"/>
+                    <person xml:id="LOCLIART">
+                        <persName>Lord Locliart</persName>
+                        <note>Général anglais.</note>
+                    </person>
                     <person xml:id="CROMWELL">
                         <persName>
                             <forename>Oliver</forename>
@@ -257,7 +260,9 @@
                         <note>(1599-1658) Homme politique anglais qui prend part à l'établissement
                             du Commonwealth et en devient le lord-protecteur.</note>
                     </person>
-                    <person xml:id="UDE"/>
+                    <person xml:id="UDE">
+                        <persName>Marquis de Ude</persName>
+                    </person>
 
                 </listPerson>
 
@@ -270,11 +275,17 @@
                                 >Cornille Bart</persName>
                         </note>
                     </person>
-                    <person xml:id="BELSEN"/>
+                    <person xml:id="BELSEN">
+                        <persName>Maître Belsen</persName>
+                        <note>Bourgeois de Dunkerque</note>
+                    </person>
                     <person xml:id="BOURGEOIS1"/>
                     <person xml:id="BOURGEOIS2"/>
                     <person xml:id="BUSCHE"/>
-                    <person xml:id="BUGNIET"/>
+                    <person xml:id="BUGNIET">
+                        <persName>Bugniet</persName>
+                        <note>Juré d'Ostende</note>
+                    </person>
                 </listPerson>
                 <listPerson type="groupes">
                     <!-- Très bien -->
@@ -324,6 +335,12 @@
                                 titre et représentant deux titrons encadrant des armes et un
                                 chapeau</figDesc> <!-- Très bien -->
                         </figure>
+                            <figure facs="images/image2.JPEG" type="milieu">
+                                <head>Mort de Cornille Bart -Ou! Les Anglais... -PAGE 7</head>
+                                <figDesc>Gravure de Beauce, au milieu de la page, représentant la mort
+                                    de Cornille Bart, assis en robe dans un fauteuil et encadré de deux
+                                    gentilhommes</figDesc>
+                            </figure>
                         <cb n="1"/>
                             <p>C'était pendant le siège de <placeName ref="#DUNKERQUE"
                                     >Dunkerque</placeName>, au mois de <date when-iso="06-1658">juin
@@ -347,23 +364,18 @@
                                 située vers cette partie de la <placeName ref="#RUEEGLISE">rue de
                                     l'Église</placeName> qui avoisinait la paroisse, alors si
                                 renommée par son merveilleux carillon.</p>
-                            <p part="I">Cette <placeName ref="#MAISONBART">maison</placeName>, comme
+                            <p>Cette <placeName ref="#MAISONBART">maison</placeName>, comme
                                 presque toutes celles du temps, était de forme irrégulière, avec de
                                 hautes et étroites croisées en ogives, garnies d'un treillis de
-                                plomb. La date de l'année de sa</p>
-                        <figure facs="images/image2.JPEG" type="milieu">
-                            <head>Mort de Cornille Bart -Ou! Les Anglais... -PAGE 7</head>
-                            <figDesc>Gravure de Beauce, au milieu de la page, représentant la mort
-                                de Cornille Bart, assis en robe dans un fauteuil et encadré de deux
-                                gentilhommes</figDesc>
-                        </figure>
+                                plomb. La date de l'année de sa 
+
                         <cb n="2"/>
-                            <p part="F"> construction se voyait chiffrée en barre de fer sur la
+                             construction se voyait chiffrée en barre de fer sur la
                                 façade; enfin, au-dessus des fenêtres du rez-de-chaussée, à gauche
                                 du degré et au niveau de la rue, une porte en saillie, garnie de
                                 larges ferrures, donnait entrée dans la cave.</p>
-                            <p>Nous l'avons dit un assez grand nombre de <persName ref="#BOURGEOIS"
-                                    >bourgeois </persName> entourait cette demeure, et, quoiqu'on
+                            <p>Nous l'avons dit un assez grand nombre de <rs ref="#BOURGEOIS"
+                                    >bourgeois </rs> entourait cette demeure, et, quoiqu'on
                                 entendît de loin à loin le bruit de l'artillerie des forts, qui
                                 répondait sourdement aux batteries <rs ref="#ANGLAIS">anglaises</rs>
                                 et <rs ref="#FRANCAIS">françaises</rs>, les progrès du siège ne
