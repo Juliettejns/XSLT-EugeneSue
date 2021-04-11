@@ -18,27 +18,27 @@
 
         <!--CREATION DES VARIABLES CONTENANT LES CHEMINS DE CHAQUE PAGE HTML-->
         <xsl:variable name="pathAccueil">
-            <xsl:value-of select="concat($witfile, 'accueil', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/accueil', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathBibliographie">
-            <xsl:value-of select="concat($witfile, 'bibliographie', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/bibliographie', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathRoman">
-            <xsl:value-of select="concat($witfile, 'roman', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/roman', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
-            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexPersonne', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathIndexLieux">
-            <xsl:value-of select="concat($witfile, 'indexLieu', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexLieu', '.html')"/>
         </xsl:variable>
         <xsl:variable name="pathImages">
-            <xsl:value-of select="concat($witfile, 'images', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/images', '.html')"/>
         </xsl:variable>
 
 
         <!--CREATION DES VARIABLES RAPPELEES FREQUEMMENT-->
-        <!--Création du head commun à toutes les pages du site-->
+        <!--Création du head commun à toutes les pages du site et des variables pour appeler les titres-->
         <xsl:variable name="titre1" select="//fileDesc/titleStmt//title[@type = 'main']"/>
         <xsl:variable name="titre2" select="//fileDesc/titleStmt//title[@type = 'sub']"/>
         <xsl:variable name="head">
@@ -97,17 +97,20 @@
                 </div>
             </footer>
         </xsl:variable>
+       
         <!--PAGE d'ACCUEIL-->
         <xsl:result-document href="{$pathAccueil}" method="html" indent="yes">
             <html>
+                <!--récupération du head-->
                 <xsl:copy-of select="$head"/>
                 <body>
+                    <!--récupération de la barre de navigation-->
                     <xsl:copy-of select="$navbar"/>
                     <div class="offset-md-2 col-md-8" style="margin-top:50px">
                         <div class="blocks">
                             <!--Ajout de l'image d'entête de début du livre-->
                             <center>
-                                <img src="images/image1.JPEG" width="500"/>
+                                <img src="../images/image1.JPEG" width="500"/>
                             </center>
                         </div>
 
@@ -130,6 +133,7 @@
 
                         </div>
                     </div>
+                    <!--utilitaires bootstrap-->
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"/>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"/>
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"/>
@@ -150,15 +154,8 @@
                             <h1>
                                 Informations bibliographiques
                             </h1>
-                                <ul>
-                                    <li>Titre:&#160;<xsl:value-of select="//biblFull//title[@type='main']"/></li>
-                                    <li>Sous-titre:&#160;<xsl:value-of select="//biblFull//title[@type='sub']"/></li>
-                                    <li>Sous-sous-titre:&#160;<xsl:value-of select="//biblFull//title[@type='m']"/></li>
-                                    <li>Auteur:&#160;<xsl:value-of select="//biblFull//author[@resp='main']/forename"/>&#160;<xsl:value-of select="//biblFull//author[@resp='main']/roleName"/>&#160;<xsl:value-of select="//biblFull//author[@resp='main']/surname"/></li>
-                                    <li>Dessinateur:&#160;<xsl:value-of select="//biblFull//author[@resp='contributor']/forename"/>&#160;<xsl:value-of select="//biblFull//author[@resp='contributor']/surname"/></li>
-                                    <li>Editeur:&#160;<xsl:value-of select="//biblFull//publisher"/></li>
-                                    <li>Date et Lieu de Publication:&#160;<xsl:value-of select="//biblFull/publicationStmt/date"/>,&#160;<xsl:value-of select="//biblFull//pubPlace"/></li>
-                                    <li>Emplacement de l'ouvrage:&#160;<xsl:value-of select="//distributor"/></li>
+                                <ul>                                   
+                                    <xsl:apply-templates select="//biblFull"/>
                                 </ul>
                             </div>
                         </div>
@@ -180,14 +177,17 @@
                         <div class="container">
                             <div class="row text-justify" style="margin:50px;align='center'">
                                 <div class="offset-md-2 col-md-8">
+                                    <!--Affichage des titres de livre et chapitre-->
                                     <h3><xsl:value-of select="//body/div1/head"/></h3>
                                     <h4><xsl:value-of select="//body//div2/head"/></h4>
+                                    <!--Affichage du texte par page sans les notes-->
                                     <xsl:apply-templates select="//div3 except //note/p"/>                        
                                 </div>
                             </div>
                             <div class="row" style="margin:50px">
                             <h4>Notes</h4>
                                 <div>
+                                    <!--Affichage des notes-->
                                     <xsl:apply-templates select="//note/p"/>                                                    
                                 </div>
                             </div>
@@ -211,6 +211,7 @@
                             <div class="offset-md-2 col-md-8">
                                 <h1>Index de Personnes</h1>
                                 <div>
+                                    <!--Appelle de la template personnes-->
                                     <xsl:call-template name="personnes"/>                            
                                 </div>
                             </div>
@@ -234,6 +235,7 @@
                             <div class="offset-md-2 col-md-8">
                                 <h1>Index de Personnes</h1>
                                 <div>
+                                    <!--Appel de la template lieux-->
                                     <xsl:call-template name="lieux"/>                            
                                 </div>
                             </div>
@@ -275,7 +277,7 @@
 
     <!--TEMPLATES-->
 
-    <!--REGLE D'AFFICHAGE DU TEXTE-->
+    <!--REGLE D'AFFICHAGE DU TEXTE PAR PAGE-->
     <xsl:template match="div3">
         <!-- J'insère chaque page dans un div afin d'avoir une vue d'ensemble 
             pour construire mon index. Cependant, par un souci d'ergonomie, il est 
@@ -286,13 +288,16 @@
             <xsl:attribute name="id">
                 <xsl:value-of select="@n"/>
             </xsl:attribute>
+            <!--Affichage du numéro de page-->
             <xsl:text>[</xsl:text>
             <xsl:value-of select="@n"/>
             <xsl:text>]</xsl:text>
+            <!--on applique toutes les templates dans la page sauf figure-->
             <xsl:apply-templates select="* except //figure"/>
         </xsl:element>
     </xsl:template>
     
+    <!--Affichage des paragraphes-->
     <xsl:template match="p">
         <xsl:element name="p">
                 <xsl:apply-templates/>
@@ -302,16 +307,21 @@
     <!--REGLE D'AFFICHAGE DES IMAGES-->
    <xsl:template match="figure">
         <xsl:element name="figure">
-            <xsl:element name="img">
+            <xsl:element name="img"> 
+                <!--Récupération du chemin de l'image dans le git-->
                 <xsl:attribute name="src">
-                    <xsl:value-of select="@facs"/>
+                    <!--Le dossier images n'étant pas au même niveau pour les pages html et le fichier tei, j'ajoute un ../ afin d'y accéder-->
+                    <xsl:text>../</xsl:text><xsl:value-of select="@facs"/>
                 </xsl:attribute>
+                <!--On réduit un peu les images car étant trop grandes-->
                 <xsl:attribute name="width">
                     <xsl:text>300</xsl:text>
                 </xsl:attribute>
             </xsl:element>
             <xsl:element name="figcaption">
+                <!--On récupère le nom de l'image-->
                 <xsl:apply-templates select="./head"/><br/>
+                <!--Et son emplacement-->
                 Emplacement: <xsl:value-of select="@type"/> de la page <xsl:value-of select="ancestor::div3/@n"/>,&#160;Chapitre <xsl:value-of select="ancestor::div2/@n"/>
             </xsl:element>
         </xsl:element>
@@ -348,13 +358,21 @@
     <xsl:template name="personnes">
         <xsl:element name="ul">
             <!--Règle permettant la création et l'affichage d'un index de personnes-->
+            <!--Pour chaque persName, on reproduit les actions suivantes-->
             <xsl:for-each select="//particDesc//person/persName">
+                <!--on trie les différents personnages dans l'ordre alphabétique-->
                 <xsl:sort select="./surname" order="ascending"/>
+                <!--Chaque personne est affichée dans un li, permettant de réaliser une liste-->
                 <xsl:element name="li">
+                    <!--On créé un attribut id, afin de pouvoir faire des renvois depuis le texte vers les descriptions dans l'index de personnages-->
                     <xsl:attribute name="id">
+                        <!--On récupère l'xml:id situé dans le person au niveau supérieur-->
                         <xsl:value-of select="parent::person/@xml:id"/>
                     </xsl:attribute>
-                    <xsl:element name="b">particDesc/
+                    <!--l'élément b permet de mettre en gras le nom de chaque personne-->
+                    <xsl:element name="b">
+                        <!--Si le nom du personnage est divisé en forename, surname, on récupère ces éléments, auquel cas, on vérifie si un roleName 
+                            existe et si oui, on le récupère. Autrement on récupère directement le texte situé dans le persName-->
                         <xsl:choose>
                             <xsl:when test="./forename">
                                 <xsl:value-of select="./forename"/>&#160;<xsl:value-of
@@ -370,10 +388,13 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:element>
+                    <!--On créé une variable contenant le xml:id de la personne-->
                     <xsl:variable name="idPerson">
                         <xsl:value-of select="parent::person/@xml:id"/>
                     </xsl:variable>
                     <xsl:text>:&#160;</xsl:text>
+                    <!--Pour chaque persName situé dans le texte (groupé par page), on compare son attribut ref à la variable idPerson. Auquel cas, on récupère le
+                        numéro de la page où il se situe.-->                        
                     <xsl:for-each-group
                         select="ancestor::TEI//body//persName[replace(@ref, '#', '') = $idPerson]"
                         group-by="ancestor::div3">
@@ -381,6 +402,7 @@
                         <xsl:if test="position() != last()">, </xsl:if>
                         <xsl:if test="position() = last()">.</xsl:if>
                     </xsl:for-each-group>
+                    <!--On affiche la description du personnage-->
                     <xsl:if test="parent::person//note">
                         <xsl:element name="p">
                             <xsl:value-of select="parent::person//note"/>
@@ -390,26 +412,33 @@
             </xsl:for-each>
         </xsl:element>
     </xsl:template>
+    
     <xsl:template name="lieux">
         <xsl:element name="ul">
             <!--Règle permettant la création et l'affichage d'un index de personnes-->
             <xsl:for-each select="//listPlace/place">
+                <!--On trie les lieux par ordre alphabétique-->
                 <xsl:sort select="./placeName" order="ascending"/>
                 <xsl:element name="li">
+                    <!--Chaque personne est contenue dans une balise li afin d'obtenir une liste-->
                     <xsl:attribute name="id">
                         <xsl:value-of select="@xml:id"/>
                     </xsl:attribute>
                     <xsl:element name="b">                       
                             <xsl:value-of select="./placeName"/>
                     </xsl:element>
+                    <!--Si l'emplacement du lieu est mentionné, on l'ajoute-->
                     <xsl:if test="./district"> , &#160;<xsl:value-of select="./district"/>
                     </xsl:if>
                     <xsl:if test="./settlement"> , &#160;<xsl:value-of select="./settlement"/>
                     </xsl:if>
+                    <!--Création d'une variable contenant l'xml:id du lieu-->
                     <xsl:variable name="idPlace">
                         <xsl:value-of select="@xml:id"/>
                     </xsl:variable>
                     <xsl:text>:&#160;</xsl:text>
+                    <!--Pour chaque placeName contenu dans le texte, groupé par page, on compare l'attribut ref à la variable idPlace
+                        et on affiche le numéro de page correspondant-->
                     <xsl:for-each-group
                         select="ancestor::TEI//body//placeName[replace(@ref, '#', '') = $idPlace]"
                         group-by="ancestor::div3">
@@ -417,6 +446,7 @@
                         <xsl:if test="position() != last()">, </xsl:if>
                         <xsl:if test="position() = last()">.</xsl:if>
                     </xsl:for-each-group>
+                    <!--Si il y a une description du lieu, on l'ajoute à la suite-->
                     <xsl:if test="parent::place/note">
                         <xsl:element name="p">
                             <xsl:value-of select="parent::place/note"/>
@@ -429,13 +459,15 @@
     
     
     <xsl:template match="body//persName[@ref]">
+        <!--Structuration du persName situé dans le texte afin de renvoyer à sa description dans l'index de Personnes-->
+        <!--Récupération du chemin-->
         <xsl:variable name="witfile">
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
-            <!-- récupération du nom et du chemin du fichier courant -->
         </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
-            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexPersonne', '.html')"/>
         </xsl:variable>
+        <!--Création d'une balise a avec un attribut href contenant: url de l'index de personnes#nom de la personne-->
         <xsl:element name="a">
             <xsl:attribute name="href">
                 <xsl:copy-of select="$pathIndexPersonnes"/><xsl:value-of select="@ref"/>
@@ -445,13 +477,15 @@
     </xsl:template>
     
     <xsl:template match="body//placeName[@ref]">
+        <!--Structuration du placeName situé dans le texte afin de renvoyer à sa description dans l'index de Lieux-->
+        <!--Récupération du chemin-->
         <xsl:variable name="witfile">
             <xsl:value-of select="replace(base-uri(.), '.xml', '')"/>
-            <!-- récupération du nom et du chemin du fichier courant -->
         </xsl:variable>
         <xsl:variable name="pathIndexPersonnes">
-            <xsl:value-of select="concat($witfile, 'indexPersonne', '.html')"/>
+            <xsl:value-of select="concat($witfile, 'pages_html/indexLieu', '.html')"/>
         </xsl:variable>
+        <!--Création d'une balise a avec un attribut href contenant: url de l'index de lieux # nom du lieu-->
         <xsl:element name="a">
             <xsl:attribute name="href">
                 <xsl:copy-of select="$pathIndexPersonnes"/><xsl:value-of select="@ref"/>
@@ -459,4 +493,17 @@
             <xsl:apply-templates/>
         </xsl:element>
     </xsl:template>
+    
+    <!--TEMPLATE AFFICHANT LES INFORMATIONS BIBLIOGRAPHIQUES-->
+    <xsl:template match="biblFull">
+        <li>Titre:&#160;<xsl:value-of select="//title[@type='main']"/></li>
+        <li>Sous-titre:&#160;<xsl:value-of select="//title[@type='sub']"/></li>
+        <li>Sous-sous-titre:&#160;<xsl:value-of select="//title[@type='m']"/></li>
+        <li>Auteur:&#160;<xsl:value-of select="//author[@resp='main']/forename"/>&#160;<xsl:value-of select="//author[@resp='main']/roleName"/>&#160;<xsl:value-of select="//author[@resp='main']/surname"/></li>
+        <li>Dessinateur:&#160;<xsl:value-of select="//author[@resp='contributor']/forename"/>&#160;<xsl:value-of select="//author[@resp='contributor']/surname"/></li>
+        <li>Editeur:&#160;<xsl:value-of select="//publisher"/></li>
+        <li>Date et Lieu de Publication:&#160;<xsl:value-of select="/publicationStmt/date"/>,&#160;<xsl:value-of select="//pubPlace"/></li>
+        <li>Emplacement de l'ouvrage:&#160;<xsl:value-of select="//distributor"/></li>       
+    </xsl:template>
 </xsl:stylesheet>
+
