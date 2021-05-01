@@ -155,7 +155,14 @@
                                 Informations bibliographiques
                             </h1>
                                 <ul>                                   
-                                    <xsl:apply-templates select="//biblFull"/>
+                                    <li>Titre:&#160;<xsl:value-of select="//title[@type='main']"/></li>
+                                    <li>Sous-titre:&#160;<xsl:value-of select="//title[@type='sub']"/></li>
+                                    <li>Sous-sous-titre:&#160;<xsl:value-of select="//title[@type='m']"/></li>
+                                    <li>Auteur:&#160;<xsl:value-of select="//author[@resp='main']/forename"/>&#160;<xsl:value-of select="//author[@resp='main']/roleName"/>&#160;<xsl:value-of select="//author[@resp='main']/surname"/></li>
+                                    <li>Dessinateur:&#160;<xsl:value-of select="//author[@resp='contributor']/forename"/>&#160;<xsl:value-of select="//author[@resp='contributor']/surname"/></li>
+                                    <li>Editeur:&#160;<xsl:value-of select="//publisher"/></li>
+                                    <li>Date et Lieu de Publication:&#160;<xsl:value-of select="/publicationStmt/date"/>,&#160;<xsl:value-of select="//pubPlace"/></li>
+                                    <li>Emplacement de l'ouvrage:&#160;<xsl:value-of select="//distributor"/></li>   
                                 </ul>
                             </div>
                         </div>
@@ -494,16 +501,5 @@
         </xsl:element>
     </xsl:template>
     
-    <!--TEMPLATE AFFICHANT LES INFORMATIONS BIBLIOGRAPHIQUES-->
-    <xsl:template match="biblFull">
-        <li>Titre:&#160;<xsl:value-of select="//title[@type='main']"/></li>
-        <li>Sous-titre:&#160;<xsl:value-of select="//title[@type='sub']"/></li>
-        <li>Sous-sous-titre:&#160;<xsl:value-of select="//title[@type='m']"/></li>
-        <li>Auteur:&#160;<xsl:value-of select="//author[@resp='main']/forename"/>&#160;<xsl:value-of select="//author[@resp='main']/roleName"/>&#160;<xsl:value-of select="//author[@resp='main']/surname"/></li>
-        <li>Dessinateur:&#160;<xsl:value-of select="//author[@resp='contributor']/forename"/>&#160;<xsl:value-of select="//author[@resp='contributor']/surname"/></li>
-        <li>Editeur:&#160;<xsl:value-of select="//publisher"/></li>
-        <li>Date et Lieu de Publication:&#160;<xsl:value-of select="/publicationStmt/date"/>,&#160;<xsl:value-of select="//pubPlace"/></li>
-        <li>Emplacement de l'ouvrage:&#160;<xsl:value-of select="//distributor"/></li>       
-    </xsl:template>
 </xsl:stylesheet>
 
